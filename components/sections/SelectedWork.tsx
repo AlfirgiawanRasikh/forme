@@ -11,7 +11,7 @@ const projects = [
     industry: 'Fashion',
     year: '2025',
     description: 'Independent fashion label exploring restrained silhouettes and natural materials.',
-    imageUrl: '/projects/serein-hero.jpg',
+    imageUrl: '/projects/serein/hero.svg',
   },
   {
     title: 'Vela',
@@ -19,7 +19,7 @@ const projects = [
     industry: 'Music & Culture',
     year: '2025',
     description: 'Independent platform documenting emerging music and underground cultural scenes.',
-    imageUrl: '/projects/vela-hero.jpg',
+    imageUrl: '/projects/vela/hero.svg',
   },
   {
     title: 'Nomae',
@@ -27,7 +27,7 @@ const projects = [
     industry: 'Hospitality',
     year: '2024',
     description: 'Collection of remote retreats focused on architecture, landscape, and slow travel.',
-    imageUrl: '/projects/nomae-hero.jpg',
+    imageUrl: '/projects/nomae/hero.svg',
   },
   {
     title: 'Atelier 27',
@@ -35,7 +35,7 @@ const projects = [
     industry: 'Furniture & Objects',
     year: '2024',
     description: 'Limited furniture and everyday objects rooted in craft and materiality.',
-    imageUrl: '/projects/atelier27-hero.jpg',
+    imageUrl: '/projects/atelier-27/hero.svg',
   },
 ];
 

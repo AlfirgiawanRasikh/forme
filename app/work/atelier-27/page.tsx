@@ -29,6 +29,7 @@ export default function Atelier27Page() {
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
+          src="/projects/atelier-27/hero.svg"
           alt="Atelier 27 product photography" 
           layout="full"
         />
@@ -61,6 +62,7 @@ export default function Atelier27Page() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
+          src="/projects/atelier-27/identity.svg"
           alt="Atelier 27 identity system"
           layout="contained"
           caption="Identity and typography"
@@ -68,16 +70,19 @@ export default function Atelier27Page() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
+            src="/projects/atelier-27/interface-1.svg"
             alt="Atelier 27 object detail 1"
             caption="Object photography"
           />
           <ProjectImage 
+            src="/projects/atelier-27/interface-2.svg"
             alt="Atelier 27 object detail 2"
             caption="Material details"
           />
         </div>
 
         <ProjectImage 
+          src="/projects/atelier-27/hero.svg"
           alt="Atelier 27 catalog interface"
           layout="full"
           caption="Digital catalog experience"
@@ -85,20 +90,24 @@ export default function Atelier27Page() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <ProjectImage 
+            src="/projects/atelier-27/detail.svg"
             alt="Atelier 27 product view 1"
             caption="Product detail"
           />
           <ProjectImage 
+            src="/projects/atelier-27/identity.svg"
             alt="Atelier 27 product view 2"
             caption="Material specs"
           />
           <ProjectImage 
+            src="/projects/atelier-27/interface-1.svg"
             alt="Atelier 27 product view 3"
             caption="Dimensions"
           />
         </div>
 
         <ProjectImage 
+          src="/projects/atelier-27/interface-2.svg"
           alt="Atelier 27 collection view"
           layout="contained"
           caption="Collection overview"

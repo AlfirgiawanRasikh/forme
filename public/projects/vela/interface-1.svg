@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1440" width="1920" height="1440">
+  <defs>
+    <linearGradient id="velaBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D0D0D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111111;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1440" fill="url(#velaBg3)"/>
+  
+  <pattern id="velaGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#FF3366" stroke-width="0.3" opacity="0.04"/>
+  </pattern>
+  <rect width="1920" height="1440" fill="url(#velaGrid)"/>
+  
+  <!-- Platform interface -->
+  <g transform="translate(960, 720)">
+    <!-- Header -->
+    <rect x="-400" y="-300" width="800" height="50" rx="4" fill="#FFFFFF" opacity="0.05"/>
+    <rect x="-380" y="-285" width="100" height="20" rx="2" fill="#FF3366" opacity="0.6"/>
+    <rect x="200" y="-285" width="80" height="20" rx="2" fill="#FFFFFF" opacity="0.3"/>
+    <rect x="300" y="-285" width="80" height="20" rx="2" fill="#FFFFFF" opacity="0.2"/>
+    
+    <!-- Feed/Content area -->
+    <g fill="#FFFFFF" opacity="0.08">
+      <!-- Article cards -->
+      <rect x="-360" y="-220" width="340" height="200" rx="4"/>
+      <rect x="20" y="-220" width="340" height="200" rx="4"/>
+      
+      <rect x="-360" y="40" width="340" height="200" rx="4" opacity="0.06"/>
+      <rect x="20" y="40" width="340" height="200" rx="4" opacity="0.06"/>
+    </g>
+    
+    <!-- Content thumbnails -->
+    <g fill="#FF3366" opacity="0.2">
+      <rect x="-340" y="-200" width="300" height="140" rx="2"/>
+      <rect x="40" y="-200" width="300" height="140" rx="2"/>
+      <rect x="-340" y="60" width="300" height="140" rx="2" opacity="0.15"/>
+      <rect x="40" y="60" width="300" height="140" rx="2" opacity="0.15"/>
+    </g>
+    
+    <!-- Article titles -->
+    <g fill="#FFFFFF" opacity="0.15">
+      <rect x="-340" y="-40" width="200" height="16" rx="2"/>
+      <rect x="-340" y="-20" width="150" height="10" rx="2" opacity="0.7"/>
+      <rect x="-340" y="-5" width="250" height="8" rx="2" opacity="0.5"/>
+      
+      <rect x="40" y="-40" width="180" height="16" rx="2"/>
+      <rect x="40" y="-20" width="120" height="10" rx="2" opacity="0.7"/>
+      <rect x="40" y="-5" width="200" height="8" rx="2" opacity="0.5"/>
+    </g>
+    
+    <!-- Metadata -->
+    <g fill="#FF3366" opacity="0.3">
+      <rect x="-340" y="10" width="60" height="10" rx="2"/>
+      <rect x="-270" y="10" width="60" height="10" rx="2" opacity="0.7"/>
+      
+      <rect x="40" y="10" width="60" height="10" rx="2"/>
+      <rect x="110" y="10" width="60" height="10" rx="2" opacity="0.7"/>
+    </g>
+    
+    <!-- Audio player bar (bottom) -->
+    <rect x="-400" y="260" width="800" height="70" rx="8" fill="#FFFFFF" opacity="0.04"/>
+    <rect x="-380" y="275" width="40" height="40" rx="4" fill="#FF3366" opacity="0.3"/>
+    <rect x="-320" y="280" width="200" height="10" rx="2" fill="#FFFFFF" opacity="0.15"/>
+    <rect x="-320" y="300" width="150" height="8" rx="2" fill="#FFFFFF" opacity="0.08"/>
+    <rect x="100" y="285" width="60" height="10" rx="2" fill="#FF3366" opacity="0.4"/>
+    <rect x="200" y="285" width="200" height="4" rx="2" fill="#FFFFFF" opacity="0.1"/>
+    <rect x="420" y="290" width="30" height="30" rx="4" fill="#FFFFFF" opacity="0.1"/>
+  </g>
+  
+  <g stroke="#FFFFFF" stroke-width="0.5" opacity="0.05" fill="none">
+    <path d="M 80 80 h 40 M 80 80 v 40"/>
+    <path d="M 1840 80 h -40 M 1840 80 v 40" transform="scale(-1,1) translate(-1920,0)"/>
+    <path d="M 80 1360 h 40 M 80 1360 v -40" transform="scale(1,-1) translate(0,-1440)"/>
+    <path d="M 1840 1360 h -40 M 1840 1360 v -40" transform="scale(-1,-1) translate(-1920,-1440)"/>
+  </g>
+  
+  <text x="960" y="1380" font-family="system-ui, sans-serif" font-size="11" font-weight="400" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="0.3em" text-transform="uppercase" opacity="0.3">
+    Vela — Interface 1
+  </text>
+</svg>

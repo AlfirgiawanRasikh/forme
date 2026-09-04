@@ -29,6 +29,7 @@ export default function NomaePage() {
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
+          src="/projects/nomae/hero.svg"
           alt="Nomae landscape photography" 
           layout="full"
         />
@@ -61,6 +62,7 @@ export default function NomaePage() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
+          src="/projects/nomae/identity.svg"
           alt="Nomae identity and color system"
           layout="contained"
           caption="Identity and color system"
@@ -68,22 +70,26 @@ export default function NomaePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
+            src="/projects/nomae/interface-1.svg"
             alt="Nomae retreat detail 1"
             caption="Retreat photography"
           />
           <ProjectImage 
+            src="/projects/nomae/interface-2.svg"
             alt="Nomae retreat detail 2"
             caption="Architectural details"
           />
         </div>
 
         <ProjectImage 
+          src="/projects/nomae/hero.svg"
           alt="Nomae website homepage"
           layout="full"
           caption="Homepage experience"
         />
 
         <ProjectImage 
+          src="/projects/nomae/detail.svg"
           alt="Nomae booking interface"
           layout="contained"
           caption="Booking flow"
@@ -91,10 +97,12 @@ export default function NomaePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
+            src="/projects/nomae/identity.svg"
             alt="Nomae retreat page"
             caption="Retreat detail page"
           />
           <ProjectImage 
+            src="/projects/nomae/interface-2.svg"
             alt="Nomae mobile experience"
             caption="Mobile interface"
           />

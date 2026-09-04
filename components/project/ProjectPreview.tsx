@@ -34,13 +34,12 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
           <div className="lg:col-span-7">
             <ImageReveal delay={index * 0.1}>
               <div className="relative aspect-[4/3] bg-foreground/5 overflow-hidden">
-                <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                {/* Image placeholder - will be replaced with actual images */}
-                <div className="absolute inset-0 flex items-center justify-center text-muted transform group-hover:scale-105 transition-transform duration-700">
-                  <span className="text-metadata uppercase tracking-wider">
-                    Project imagery
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                <img 
+                  src={project.imageUrl} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </ImageReveal>
           </div>
@@ -88,13 +87,12 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
           <div className="lg:col-span-7 order-1 lg:order-2">
             <ImageReveal delay={index * 0.1}>
               <div className="relative aspect-[4/3] bg-foreground/5 overflow-hidden">
-                <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                {/* Image placeholder - will be replaced with actual images */}
-                <div className="absolute inset-0 flex items-center justify-center text-muted transform group-hover:scale-105 transition-transform duration-700">
-                  <span className="text-metadata uppercase tracking-wider">
-                    Project imagery
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                <img 
+                  src={project.imageUrl} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </ImageReveal>
           </div>

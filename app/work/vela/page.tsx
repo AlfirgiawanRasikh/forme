@@ -29,6 +29,7 @@ export default function VelaPage() {
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
+          src="/projects/vela/hero.svg"
           alt="Vela platform hero" 
           layout="full"
         />
@@ -61,6 +62,7 @@ export default function VelaPage() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
+          src="/projects/vela/identity.svg"
           alt="Vela identity and typography"
           layout="full"
           caption="Typography and identity system"
@@ -68,16 +70,19 @@ export default function VelaPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
+            src="/projects/vela/interface-1.svg"
             alt="Vela editorial layout 1"
             caption="Editorial layouts"
           />
           <ProjectImage 
+            src="/projects/vela/interface-2.svg"
             alt="Vela editorial layout 2"
             caption="Content templates"
           />
         </div>
 
         <ProjectImage 
+          src="/projects/vela/hero.svg"
           alt="Vela platform interface"
           layout="contained"
           caption="Platform interface and navigation"
@@ -85,14 +90,17 @@ export default function VelaPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <ProjectImage 
+            src="/projects/vela/detail.svg"
             alt="Vela mobile view 1"
             caption="Mobile interface"
           />
           <ProjectImage 
+            src="/projects/vela/identity.svg"
             alt="Vela mobile view 2"
             caption="Article view"
           />
           <ProjectImage 
+            src="/projects/vela/interface-1.svg"
             alt="Vela mobile view 3"
             caption="Event listings"
           />

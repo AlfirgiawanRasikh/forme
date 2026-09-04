@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1440" width="1920" height="1440">
+  <rect width="100%" height="100%" fill="#FAF9F6"/>
+  <line x1="200" y1="600" x2="1720" y2="600" stroke="#0A0A0A" stroke-width="2"/>
+  <line x1="200" y1="840" x2="1720" y2="840" stroke="#0A0A0A" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="800" y="400" width="320" height="160" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+  <rect x="520" y="720" width="240" height="80" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+  <rect x="1160" y="720" width="240" height="80" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+  <text x="120" y="140" font-family="system-ui, sans-serif" font-size="32" fill="#0A0A0A" letter-spacing="6">ATELIER 27</text>
+  <text x="120" y="1320" font-family="system-ui, sans-serif" font-size="24" fill="#6B6B6B" letter-spacing="3">PROJECT 04 — FURNITURE & OBJECTS</text>
+  <text x="1650" y="1320" font-family="system-ui, sans-serif" font-size="24" fill="#6B6B6B">01 / 05</text>
+</svg>
