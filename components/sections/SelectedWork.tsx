@@ -5,14 +5,7 @@ import ProjectPreview from '@/components/project/ProjectPreview';
 import TextReveal from '@/components/motion/TextReveal';
 import { getAllProjects } from '@/lib/projects';
 
-const projects = getAllProjects().map(project => ({
-  title: project.title,
-  slug: project.slug,
-  industry: project.industry,
-  year: project.year,
-  description: project.description,
-  imageUrl: project.assets.hero,
-}));
+const projects = getAllProjects();
 
 export default function SelectedWork() {
   return (

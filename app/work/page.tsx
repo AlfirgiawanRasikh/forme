@@ -1,42 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ProjectMetadata from '@/components/project/ProjectMetadata';
+import { getAllProjects } from '@/lib/projects';
 
 export const metadata: Metadata = {
   title: 'Work',
   description: 'Selected projects from FORME, independent digital studio.',
 };
 
-const projects = [
-  {
-    title: 'Serein',
-    slug: 'serein',
-    industry: 'Fashion',
-    year: '2025',
-    description: 'Independent fashion label exploring restrained silhouettes and natural materials.',
-  },
-  {
-    title: 'Vela',
-    slug: 'vela',
-    industry: 'Music & Culture',
-    year: '2025',
-    description: 'Independent platform documenting emerging music and underground cultural scenes.',
-  },
-  {
-    title: 'Nomae',
-    slug: 'nomae',
-    industry: 'Hospitality',
-    year: '2024',
-    description: 'Collection of remote retreats focused on architecture, landscape, and slow travel.',
-  },
-  {
-    title: 'Atelier 27',
-    slug: 'atelier-27',
-    industry: 'Furniture & Objects',
-    year: '2024',
-    description: 'Limited furniture and everyday objects rooted in craft and materiality.',
-  },
-];
+const projects = getAllProjects();
 
 export default function WorkPage() {
   return (

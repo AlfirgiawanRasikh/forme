@@ -4,6 +4,6 @@
   <circle cx="960" cy="720" r="600" fill="none" stroke="#FF3366" stroke-width="1" stroke-opacity="0.2"/>
   <circle cx="960" cy="720" r="400" fill="none" stroke="#FF3366" stroke-width="1" stroke-opacity="0.3"/>
   <circle cx="960" cy="720" r="200" fill="none" stroke="#FF3366" stroke-width="2" stroke-opacity="0.4"/>
-  <text x="120" y="1320" font-family="system-ui, sans-serif" font-size="24" fill="#888" letter-spacing="4">PROJECT 02 // VELA — DETAIL ARCHIVE</text>
+  <text x="120" y="1320" font-family="system-ui, sans-serif" font-size="24" fill="#888" letter-spacing="4">PROJECT 02 // VELA - DETAIL ARCHIVE</text>
   <text x="1600" y="1320" font-family="system-ui, sans-serif" font-size="24" fill="#FF3366" letter-spacing="2">05 / 05</text>
 </svg>
