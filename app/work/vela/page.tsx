@@ -4,34 +4,33 @@ import ProjectSection from '@/components/project/ProjectSection';
 import ProjectTextBlock from '@/components/project/ProjectTextBlock';
 import ProjectImage from '@/components/project/ProjectImage';
 import NextProject from '@/components/project/NextProject';
+import { getProjectBySlug } from '@/lib/projects';
+
+const project = getProjectBySlug('vela')!;
 
 export const metadata: Metadata = {
-  title: 'Vela',
-  description: 'Independent platform documenting emerging music and underground cultural scenes.',
+  title: project.title,
+  description: project.description,
 };
 
 export default function VelaPage() {
   return (
     <>
       <ProjectHero
-        title="Vela"
-        industry="Music & Culture"
-        year="2025"
-        services={[
-          'Brand Strategy',
-          'Identity',
-          'Digital Platform',
-          'Interaction Design',
-        ]}
-        description="Independent platform documenting emerging music and underground cultural scenes."
+        title={project.title}
+        industry={project.industry}
+        year={project.year}
+        services={project.services}
+        description={project.description}
       />
 
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
-          src="/projects/vela/hero.svg"
-          alt="Vela platform hero" 
+          src={project.assets.hero}
+          alt="Vela platform identity" 
           layout="full"
+          fit="contain"
         />
       </ProjectSection>
 
@@ -40,7 +39,7 @@ export default function VelaPage() {
         <ProjectTextBlock
           title="Challenge"
           content={[
-            "Vela needed a digital presence that could capture the energy of underground music culture while remaining functional as an editorial platform. The platform would need to accommodate diverse content formats (interviews, photography, audio, and event listings) without becoming fragmented.",
+            "Vela needed a digital presence that could capture the energy of underground music culture while remaining functional as an editorial platform. The platform would need to accommodate diverse content formats without becoming fragmented.",
             "The visual identity needed to feel current but not disposable, rooted in music culture without relying on clichéd iconography."
           ]}
           layout="narrow"
@@ -62,49 +61,35 @@ export default function VelaPage() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
-          src="/projects/vela/identity.svg"
-          alt="Vela identity and typography"
+          src={project.assets.identity}
+          alt="Vela typographic and identity system"
           layout="full"
           caption="Typography and identity system"
+          fit="contain"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
-            src="/projects/vela/interface-1.svg"
-            alt="Vela editorial layout 1"
+            src={project.assets.interface1}
+            alt="Vela editorial layout"
             caption="Editorial layouts"
+            fit="contain"
           />
           <ProjectImage 
-            src="/projects/vela/interface-2.svg"
-            alt="Vela editorial layout 2"
+            src={project.assets.interface2}
+            alt="Vela content templates"
             caption="Content templates"
+            fit="contain"
           />
         </div>
 
         <ProjectImage 
-          src="/projects/vela/hero.svg"
-          alt="Vela platform interface"
+          src={project.assets.detail}
+          alt="Vela platform interface and navigation"
           layout="contained"
-          caption="Platform interface and navigation"
+          caption="Platform interface and mobile view"
+          fit="contain"
         />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <ProjectImage 
-            src="/projects/vela/detail.svg"
-            alt="Vela mobile view 1"
-            caption="Mobile interface"
-          />
-          <ProjectImage 
-            src="/projects/vela/identity.svg"
-            alt="Vela mobile view 2"
-            caption="Article view"
-          />
-          <ProjectImage 
-            src="/projects/vela/interface-1.svg"
-            alt="Vela mobile view 3"
-            caption="Event listings"
-          />
-        </div>
       </ProjectSection>
 
       {/* Outcome */}

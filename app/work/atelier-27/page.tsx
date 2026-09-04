@@ -4,34 +4,33 @@ import ProjectSection from '@/components/project/ProjectSection';
 import ProjectTextBlock from '@/components/project/ProjectTextBlock';
 import ProjectImage from '@/components/project/ProjectImage';
 import NextProject from '@/components/project/NextProject';
+import { getProjectBySlug } from '@/lib/projects';
+
+const project = getProjectBySlug('atelier-27')!;
 
 export const metadata: Metadata = {
-  title: 'Atelier 27',
-  description: 'Limited furniture and everyday objects rooted in craft and materiality.',
+  title: project.title,
+  description: project.description,
 };
 
 export default function Atelier27Page() {
   return (
     <>
       <ProjectHero
-        title="Atelier 27"
-        industry="Furniture & Objects"
-        year="2024"
-        services={[
-          'Identity',
-          'Art Direction',
-          'Digital Catalog',
-          'Interactive Product Experience',
-        ]}
-        description="Limited furniture and everyday objects rooted in craft and materiality."
+        title={project.title}
+        industry={project.industry}
+        year={project.year}
+        services={project.services}
+        description={project.description}
       />
 
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
-          src="/projects/atelier-27/hero.svg"
-          alt="Atelier 27 product photography" 
+          src={project.assets.hero}
+          alt="Atelier 27 brand identity" 
           layout="full"
+          fit="contain"
         />
       </ProjectSection>
 
@@ -40,8 +39,8 @@ export default function Atelier27Page() {
         <ProjectTextBlock
           title="Challenge"
           content={[
-            "Atelier 27 produces limited furniture and objects with an emphasis on materiality and craft. The studio needed a digital presence that could function as both portfolio and catalog without becoming a traditional e-commerce experience.",
-            "The challenge was to showcase individual pieces with the attention they deserve while maintaining the cohesive identity of the studio itself."
+            "Atelier 27 creates limited-edition furniture and everyday objects rooted in material honesty. They required a digital catalog that reflected the tactile and architectural qualities of their physical pieces.",
+            "The challenge was to present catalog items with precision, allowing material texture and form to take precedence over standard e-commerce UI conventions."
           ]}
           layout="narrow"
         />
@@ -52,8 +51,8 @@ export default function Atelier27Page() {
         <ProjectTextBlock
           title="Approach"
           content={[
-            "We developed a catalog-inspired system with strong architectural grids and neutral environments that allow the objects themselves to occupy focus. Product photography emphasizes form, silhouette, and material texture.",
-            "The digital experience was designed to feel more like browsing a curated collection than shopping. Each piece is given space to be understood on its own terms before any commercial interaction."
+            "We designed an architectural grid system inspired by print catalogs and gallery monographs. Neutral environments, strong object silhouettes, and crisp typography frame each piece.",
+            "The interactive product experience provides close inspection capabilities without cluttering the interface."
           ]}
           layout="narrow"
         />
@@ -62,55 +61,34 @@ export default function Atelier27Page() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
-          src="/projects/atelier-27/identity.svg"
-          alt="Atelier 27 identity system"
+          src={project.assets.identity}
+          alt="Atelier 27 typography and catalog layout"
           layout="contained"
-          caption="Identity and typography"
+          caption="Catalog typography and layout"
+          fit="contain"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
-            src="/projects/atelier-27/interface-1.svg"
-            alt="Atelier 27 object detail 1"
-            caption="Object photography"
+            src={project.assets.interface1}
+            alt="Atelier 27 product object view 1"
+            caption="Object presentation"
+            fit="contain"
           />
           <ProjectImage 
-            src="/projects/atelier-27/interface-2.svg"
-            alt="Atelier 27 object detail 2"
-            caption="Material details"
+            src={project.assets.interface2}
+            alt="Atelier 27 product object view 2"
+            caption="Material specifications"
+            fit="contain"
           />
         </div>
 
         <ProjectImage 
-          src="/projects/atelier-27/hero.svg"
-          alt="Atelier 27 catalog interface"
-          layout="full"
-          caption="Digital catalog experience"
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <ProjectImage 
-            src="/projects/atelier-27/detail.svg"
-            alt="Atelier 27 product view 1"
-            caption="Product detail"
-          />
-          <ProjectImage 
-            src="/projects/atelier-27/identity.svg"
-            alt="Atelier 27 product view 2"
-            caption="Material specs"
-          />
-          <ProjectImage 
-            src="/projects/atelier-27/interface-1.svg"
-            alt="Atelier 27 product view 3"
-            caption="Dimensions"
-          />
-        </div>
-
-        <ProjectImage 
-          src="/projects/atelier-27/interface-2.svg"
-          alt="Atelier 27 collection view"
+          src={project.assets.detail}
+          alt="Atelier 27 digital catalog interface"
           layout="contained"
-          caption="Collection overview"
+          caption="Digital catalog interface"
+          fit="contain"
         />
       </ProjectSection>
 
@@ -119,8 +97,8 @@ export default function Atelier27Page() {
         <ProjectTextBlock
           title="Outcome"
           content={[
-            "The digital catalog successfully positions Atelier 27 within the landscape of thoughtful object design. The restrained interface allows the work to speak for itself while providing all necessary information for interested buyers.",
-            "The system scales gracefully as new pieces are introduced, maintaining consistency while allowing each object its moment of focus."
+            "The resulting digital catalog acts as both an archive and a calm digital showroom. The restraint of the interface mirrors the physical stillness of the objects themselves.",
+            "Atelier 27 now possesses a digital presence capable of conveying the permanence and material quality of their work."
           ]}
           layout="narrow"
         />

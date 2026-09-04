@@ -1,37 +1,44 @@
 import type { Metadata } from 'next';
+import { getProjectBySlug } from '@/lib/projects';
 import ProjectHero from '@/components/project/ProjectHero';
 import ProjectSection from '@/components/project/ProjectSection';
 import ProjectTextBlock from '@/components/project/ProjectTextBlock';
 import ProjectImage from '@/components/project/ProjectImage';
 import NextProject from '@/components/project/NextProject';
 
-export const metadata: Metadata = {
-  title: 'Serein',
-  description: 'Independent fashion label exploring restrained silhouettes and natural materials.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const project = getProjectBySlug('serein');
+  return {
+    title: project?.title || 'Serein',
+    description: project?.description || 'Independent fashion label exploring restrained silhouettes and natural materials.',
+  };
+}
 
 export default function SereinPage() {
+  const project = getProjectBySlug('serein');
+
+  if (!project) {
+    return null;
+  }
+
   return (
     <>
       <ProjectHero
-        title="Serein"
-        industry="Fashion"
-        year="2025"
-        services={[
-          'Brand Identity',
-          'Art Direction',
-          'Digital Design',
-          'E-commerce Experience',
-        ]}
-        description="Independent fashion label exploring restrained silhouettes and natural materials."
+        title={project.title}
+        industry={project.industry}
+        year={project.year}
+        services={project.services}
+        description={project.description}
       />
 
-      {/* Hero Image */}
+      {/* Hero Identity */}
       <ProjectSection>
         <ProjectImage 
-          src="/projects/serein/hero.svg"
-          alt="Serein hero imagery" 
+          src={project.assets.hero}
+          alt={`${project.title} primary identity composition`}
           layout="full"
+          fit="contain"
+          caption="Core identity composition"
         />
       </ProjectSection>
 
@@ -52,7 +59,7 @@ export default function SereinPage() {
         <ProjectTextBlock
           title="Approach"
           content={[
-            "We developed an identity rooted in negative space and proportion. The visual language uses high-contrast monochromatic photography, generous whitespace, and narrow typography to create a sense of refinement.",
+            "We developed an identity rooted in negative space and proportion. The visual language uses high-contrast typographic structures, generous whitespace, and narrow typeforms to create a sense of refinement.",
             "The digital experience was designed as an extension of the physical garments, with minimal interface elements that never compete with the clothing itself."
           ]}
           layout="narrow"
@@ -63,43 +70,34 @@ export default function SereinPage() {
       <ProjectSection className="space-y-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
-            src="/projects/serein/identity.svg"
-            alt="Serein lookbook spread 1"
-            caption="Editorial photography"
+            src={project.assets.identity}
+            alt={`${project.title} typography and identity study`}
+            caption="Typography and identity system"
+            fit="contain"
           />
           <ProjectImage 
-            src="/projects/serein/interface-1.svg"
-            alt="Serein lookbook spread 2"
-            caption="Collection details"
+            src={project.assets.interface1}
+            alt={`${project.title} layout exploration`}
+            caption="Layout and spacing explorations"
+            fit="contain"
           />
         </div>
 
         <ProjectImage 
-          src="/projects/serein/interface-2.svg"
-          alt="Serein identity system"
+          src={project.assets.interface2}
+          alt={`${project.title} interface design`}
           layout="contained"
-          caption="Identity system and applications"
+          caption="Interface rhythm and modularity"
+          fit="contain"
         />
 
         <ProjectImage 
-          src="/projects/serein/hero.svg"
-          alt="Serein e-commerce interface"
+          src={project.assets.detail}
+          alt={`${project.title} visual details`}
           layout="full"
-          caption="E-commerce experience"
+          caption="Micro-typography and detailing"
+          fit="contain"
         />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ProjectImage 
-            src="/projects/serein/detail.svg"
-            alt="Serein product detail 1"
-            caption="Product interface"
-          />
-          <ProjectImage 
-            src="/projects/serein/identity.svg"
-            alt="Serein product detail 2"
-            caption="Mobile experience"
-          />
-        </div>
       </ProjectSection>
 
       {/* Outcome */}

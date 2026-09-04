@@ -3,18 +3,14 @@
 import Link from 'next/link';
 import ProjectMetadata from './ProjectMetadata';
 import ImageReveal from '@/components/motion/ImageReveal';
+import { Project } from '@/lib/projects';
 
-interface Project {
-  title: string;
-  slug: string;
-  industry: string;
-  year: string;
-  description: string;
+export type ProjectPreviewData = Pick<Project, 'title' | 'slug' | 'industry' | 'year' | 'description'> & {
   imageUrl: string;
-}
+};
 
 interface ProjectPreviewProps {
-  project: Project;
+  project: ProjectPreviewData;
   index: number;
 }
 

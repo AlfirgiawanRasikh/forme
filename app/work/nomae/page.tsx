@@ -4,34 +4,33 @@ import ProjectSection from '@/components/project/ProjectSection';
 import ProjectTextBlock from '@/components/project/ProjectTextBlock';
 import ProjectImage from '@/components/project/ProjectImage';
 import NextProject from '@/components/project/NextProject';
+import { getProjectBySlug } from '@/lib/projects';
+
+const project = getProjectBySlug('nomae')!;
 
 export const metadata: Metadata = {
-  title: 'Nomae',
-  description: 'Collection of remote retreats focused on architecture, landscape, and slow travel.',
+  title: project.title,
+  description: project.description,
 };
 
 export default function NomaePage() {
   return (
     <>
       <ProjectHero
-        title="Nomae"
-        industry="Hospitality"
-        year="2024"
-        services={[
-          'Brand Identity',
-          'Digital Direction',
-          'Booking Experience Concept',
-          'Web Design',
-        ]}
-        description="Collection of remote retreats focused on architecture, landscape, and slow travel."
+        title={project.title}
+        industry={project.industry}
+        year={project.year}
+        services={project.services}
+        description={project.description}
       />
 
       {/* Hero Image */}
       <ProjectSection>
         <ProjectImage 
-          src="/projects/nomae/hero.svg"
-          alt="Nomae landscape photography" 
+          src={project.assets.hero}
+          alt="Nomae brand and visual identity" 
           layout="full"
+          fit="contain"
         />
       </ProjectSection>
 
@@ -52,7 +51,7 @@ export default function NomaePage() {
         <ProjectTextBlock
           title="Approach"
           content={[
-            "We developed a visual system centered on landscape photography and elegant serif typography. The warm, earth-inspired palette and generous use of whitespace create a sense of breathing room, mirroring the physical experience of the retreats themselves.",
+            "We developed a visual system centered on landscape typography and elegant serif headings. The warm, earth-inspired palette and generous use of whitespace create a sense of breathing room.",
             "The booking experience was designed to feel unhurried. Large imagery, thoughtful pacing, and clear information architecture guide users through the process without pressure."
           ]}
           layout="narrow"
@@ -62,51 +61,35 @@ export default function NomaePage() {
       {/* Visual Story */}
       <ProjectSection className="space-y-24">
         <ProjectImage 
-          src="/projects/nomae/identity.svg"
+          src={project.assets.identity}
           alt="Nomae identity and color system"
           layout="contained"
           caption="Identity and color system"
+          fit="contain"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProjectImage 
-            src="/projects/nomae/interface-1.svg"
-            alt="Nomae retreat detail 1"
-            caption="Retreat photography"
+            src={project.assets.interface1}
+            alt="Nomae retreat editorial layout"
+            caption="Retreat editorial layouts"
+            fit="contain"
           />
           <ProjectImage 
-            src="/projects/nomae/interface-2.svg"
-            alt="Nomae retreat detail 2"
+            src={project.assets.interface2}
+            alt="Nomae architectural details"
             caption="Architectural details"
+            fit="contain"
           />
         </div>
 
         <ProjectImage 
-          src="/projects/nomae/hero.svg"
-          alt="Nomae website homepage"
-          layout="full"
-          caption="Homepage experience"
-        />
-
-        <ProjectImage 
-          src="/projects/nomae/detail.svg"
+          src={project.assets.detail}
           alt="Nomae booking interface"
           layout="contained"
-          caption="Booking flow"
+          caption="Booking flow and mobile interface"
+          fit="contain"
         />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ProjectImage 
-            src="/projects/nomae/identity.svg"
-            alt="Nomae retreat page"
-            caption="Retreat detail page"
-          />
-          <ProjectImage 
-            src="/projects/nomae/interface-2.svg"
-            alt="Nomae mobile experience"
-            caption="Mobile interface"
-          />
-        </div>
       </ProjectSection>
 
       {/* Outcome */}
