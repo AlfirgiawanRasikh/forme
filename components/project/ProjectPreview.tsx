@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import ProjectMetadata from './ProjectMetadata';
 import ImageReveal from '@/components/motion/ImageReveal';
 

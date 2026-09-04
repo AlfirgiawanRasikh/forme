@@ -17,13 +17,11 @@ A sophisticated portfolio project presented as a fictional independent digital s
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
+- **Motion:** Framer Motion
+- **Email:** Resend
+- **Validation:** Zod
 - **Fonts:** Inter (Sans) + Newsreader (Serif)
-- **Deployment:** Vercel (planned)
-
-### Planned Additions
-- Framer Motion (motion system)
-- Sanity CMS (content management)
-- Resend (email functionality)
+- **Deployment:** Vercel
 
 ## Project Structure
 
@@ -32,15 +30,22 @@ FORME/
 ├── app/                    # Next.js app directory
 │   ├── layout.tsx         # Root layout with metadata
 │   ├── page.tsx           # Homepage
+│   ├── work/              # Case study pages
+│   ├── studio/            # Studio page
+│   ├── contact/           # Contact page with form
 │   └── globals.css        # Global styles
 ├── components/
 │   ├── layout/            # Header, Footer
 │   ├── ui/                # Reusable UI components
-│   ├── motion/            # Animation components
+│   ├── motion/            # Animation components (Framer Motion)
 │   ├── project/           # Project-specific components
 │   └── sections/          # Page sections
-├── lib/                   # Utilities and helpers
-└── public/                # Static assets
+├── lib/
+│   ├── projects.ts        # Centralized project data
+│   └── utils.ts           # Utility functions
+├── public/
+│   └── projects/          # Project visual assets (SVG)
+└── tailwind.config.ts     # Design system configuration
 ```
 
 ## Getting Started
@@ -85,31 +90,7 @@ npm start
 - Tablet: 8 columns
 - Mobile: 4 columns
 
-## Project Timeline
-
-**Duration:** 2 weeks
-
-### Phase 1: Foundation (Days 1-2) ✅
-- Project setup
-- Design system
-- Layout components
-- Homepage foundation
-
-### Phase 2: Case Studies (Days 3-5)
-- Case study template
-- Four project pages (Serein, Vela, Nomae, Atelier 27)
-
-### Phase 3: Pages (Days 6-9)
-- Studio page
-- Contact page with form
-- Motion system implementation
-
-### Phase 4: Polish (Days 10-14)
-- Performance optimization
-- CMS integration
-- Production deployment
-
-## Featured Projects
+## Case Studies
 
 1. **Serein** - Fashion
 2. **Vela** - Music & Culture
@@ -123,20 +104,18 @@ Create a `.env.local` file:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
-# Sanity (when ready)
-# NEXT_PUBLIC_SANITY_PROJECT_ID=
-# NEXT_PUBLIC_SANITY_DATASET=production
-
-# Resend (when ready)
-# RESEND_API_KEY=
+# Resend (for contact form)
+RESEND_API_KEY=your_api_key_here
+CONTACT_EMAIL=your_email@example.com
 ```
 
-## Performance Targets
+## Features
 
-- Lighthouse Performance: 90+
-- Lighthouse Accessibility: 95+
-- WCAG 2.1 AA compliance
-- Core Web Vitals optimized
+- **Responsive Design:** Mobile-first approach with fluid typography
+- **Refined Motion:** Page transitions, image reveals, text animations
+- **Accessibility:** Semantic HTML, keyboard navigation, reduced-motion support
+- **Type Safety:** Full TypeScript coverage
+- **Production Ready:** Optimized build with Next.js 15
 
 ## Development Notes
 
@@ -151,5 +130,5 @@ This is a portfolio project for demonstration purposes.
 
 ---
 
-**Status:** In Development  
-**Last Updated:** 2026-09-04
+**Built by:** [Alfirgiawan Rasikh](https://github.com/AlfirgiawanRasikh)  
+**Repository:** [github.com/AlfirgiawanRasikh/forme](https://github.com/AlfirgiawanRasikh/forme)
