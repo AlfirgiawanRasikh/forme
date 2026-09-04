@@ -41,8 +41,7 @@ FORME/
 │   ├── project/           # Project-specific components
 │   └── sections/          # Page sections
 ├── lib/
-│   ├── projects.ts        # Centralized project data
-│   └── utils.ts           # Utility functions
+│   └── projects.ts        # Centralized project data
 ├── public/
 │   └── projects/          # Project visual assets (SVG)
 └── tailwind.config.ts     # Design system configuration
@@ -115,7 +114,7 @@ CONTACT_EMAIL=your_email@example.com
 - **Refined Motion:** Page transitions, image reveals, text animations
 - **Accessibility:** Semantic HTML, keyboard navigation, reduced-motion support
 - **Type Safety:** Full TypeScript coverage
-- **Production Ready:** Optimized build with Next.js 15
+- **Production Build:** Verified with Next.js 15 optimization
 
 ## Development Notes
 
