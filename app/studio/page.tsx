@@ -12,7 +12,7 @@ export default function StudioPage() {
       {/* Introduction */}
       <section className="px-container mb-section">
         <div className="max-w-7xl">
-          <h1 className="text-display font-medium mb-16 leading-tight">
+          <h1 className="text-h1 sm:text-display font-medium mb-16 leading-tight">
             Independent in structure.
             <br />
             Collaborative by nature.
