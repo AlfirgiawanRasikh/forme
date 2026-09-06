@@ -3,15 +3,20 @@ import { Resend } from 'resend';
 import { z } from 'zod';
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required'),
-  email: z.string().trim().email('Invalid email address'),
+  name: z.string().trim().min(1, 'Name is required').max(100, 'Name is too long'),
+  email: z.string().trim().email('Invalid email address').max(254, 'Email is too long'),
   projectType: z.enum([
     'Brand Identity',
     'Digital Experience',
     'Creative Development',
     'Other',
   ]),
-  message: z.string().trim().min(10, 'Message must be at least 10 characters'),
+  message: z
+    .string()
+    .trim()
+    .min(10, 'Message must be at least 10 characters')
+    .max(5000, 'Message must be 5000 characters or fewer'),
+  website: z.string().trim().max(200).optional().default(''),
 });
 
 const contactEnvironmentSchema = z.object({
@@ -43,6 +48,11 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     const validatedData = contactSchema.parse(body);
+
+    if (validatedData.website) {
+      return NextResponse.json({ message: 'Message sent successfully' }, { status: 200 });
+    }
+
     const contactEnvironment = contactEnvironmentSchema.safeParse({
       RESEND_API_KEY: process.env.RESEND_API_KEY,
       CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL,
@@ -61,7 +71,7 @@ export async function POST(request: NextRequest) {
     const safeProjectType = escapeHtml(validatedData.projectType);
     const safeMessage = escapeHtml(validatedData.message).replace(/\n/g, '<br>');
 
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'FORME Contact <onboarding@resend.dev>',
       to: contactEnvironment.data.CONTACT_TO_EMAIL,
       replyTo: validatedData.email,
@@ -115,7 +125,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: 'Message sent successfully', id: data?.id },
+      { message: 'Message sent successfully' },
       { status: 200 }
     );
   } catch (error) {

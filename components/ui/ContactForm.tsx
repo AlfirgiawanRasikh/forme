@@ -19,6 +19,7 @@ export default function ContactForm() {
       email: formData.get('email') as string,
       projectType: formData.get('projectType') as string,
       message: formData.get('message') as string,
+      website: formData.get('website') as string,
     };
 
     try {
@@ -47,7 +48,7 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="py-16 text-center">
+      <div className="py-16 text-center" role="status" aria-live="polite">
         <h2 className="text-h2 font-medium mb-4">Message sent</h2>
         <p className="text-body text-muted mb-8">
           Thank you for reaching out. We&apos;ll get back to you within 24 hours.
@@ -63,7 +64,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-8"
+      aria-busy={status === 'submitting'}
+    >
       {/* Name */}
       <div>
         <label 
@@ -77,6 +82,8 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
+          maxLength={100}
+          autoComplete="name"
           disabled={status === 'submitting'}
           className="w-full px-0 py-3 bg-transparent border-b border-foreground/20 focus:border-foreground outline-none transition-colors duration-300 disabled:opacity-50"
           placeholder="Your name"
@@ -96,6 +103,8 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
+          maxLength={254}
+          autoComplete="email"
           disabled={status === 'submitting'}
           className="w-full px-0 py-3 bg-transparent border-b border-foreground/20 focus:border-foreground outline-none transition-colors duration-300 disabled:opacity-50"
           placeholder="your@email.com"
@@ -137,6 +146,8 @@ export default function ContactForm() {
           id="message"
           name="message"
           required
+          minLength={10}
+          maxLength={5000}
           disabled={status === 'submitting'}
           rows={6}
           className="w-full px-0 py-3 bg-transparent border-b border-foreground/20 focus:border-foreground outline-none transition-colors duration-300 resize-none disabled:opacity-50"
@@ -144,9 +155,24 @@ export default function ContactForm() {
         />
       </div>
 
+      <div className="sr-only" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Error Message */}
       {status === 'error' && (
-        <div className="p-4 border border-red-500/20 bg-red-500/5">
+        <div
+          className="p-4 border border-red-500/20 bg-red-500/5"
+          role="alert"
+          aria-live="polite"
+        >
           <p className="text-sm text-red-600">{errorMessage}</p>
         </div>
       )}
