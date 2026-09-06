@@ -25,12 +25,8 @@ export const metadata: Metadata = {
   },
   description: 'Independent digital studio for brand, culture and technology.',
   metadataBase: new URL(getSiteUrl()),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
-    url: '/',
     locale: 'en_US',
     siteName: 'FORME',
     images: ['/opengraph-image'],
