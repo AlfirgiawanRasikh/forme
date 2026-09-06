@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import PageTransition from '@/components/motion/PageTransition';
+import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,14 +24,20 @@ export const metadata: Metadata = {
     template: '%s - FORME',
   },
   description: 'Independent digital studio for brand, culture and technology.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(getSiteUrl()),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
+    url: '/',
     locale: 'en_US',
     siteName: 'FORME',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['/opengraph-image'],
   },
 };
 

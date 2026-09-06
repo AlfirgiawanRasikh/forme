@@ -2,6 +2,8 @@
 
 A sophisticated portfolio project presented as a fictional independent digital studio. Built with Next.js, TypeScript, and Tailwind CSS.
 
+**Live Demo:** [forme-drab.vercel.app](https://forme-drab.vercel.app/)
+
 ## Overview
 
 **FORME** is an independent digital studio working at the intersection of brand, culture, and technology. This project demonstrates the ability to combine sophisticated visual design with production-quality frontend engineering.
@@ -101,12 +103,12 @@ npm start
 Create a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-
-# Resend (required for contact form delivery)
-RESEND_API_KEY=your_api_key_here
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+RESEND_API_KEY=your_resend_api_key
 CONTACT_TO_EMAIL=your_destination@example.com
 ```
+
+`NEXT_PUBLIC_SITE_URL` defines the canonical deployment URL. Resend uses the server-only API key to deliver validated contact form submissions to `CONTACT_TO_EMAIL`.
 
 ## Features
 
