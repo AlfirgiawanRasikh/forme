@@ -14,6 +14,11 @@ const contactSchema = z.object({
   message: z.string().trim().min(10, 'Message must be at least 10 characters'),
 });
 
+const contactEnvironmentSchema = z.object({
+  RESEND_API_KEY: z.string().trim().min(1),
+  CONTACT_TO_EMAIL: z.string().trim().email(),
+});
+
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => {
     switch (character) {
@@ -38,26 +43,27 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     const validatedData = contactSchema.parse(body);
-    const resendApiKey = process.env.RESEND_API_KEY;
-    const contactEmailFrom = process.env.CONTACT_EMAIL_FROM;
-    const contactEmailTo = process.env.CONTACT_EMAIL_TO;
+    const contactEnvironment = contactEnvironmentSchema.safeParse({
+      RESEND_API_KEY: process.env.RESEND_API_KEY,
+      CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL,
+    });
 
-    if (!resendApiKey || !contactEmailFrom || !contactEmailTo) {
+    if (!contactEnvironment.success) {
       return NextResponse.json(
-        { message: 'Contact form delivery is not configured.' },
+        { message: 'The contact form is temporarily unavailable. Please try again later.' },
         { status: 503 }
       );
     }
 
-    const resend = new Resend(resendApiKey);
+    const resend = new Resend(contactEnvironment.data.RESEND_API_KEY);
     const safeName = escapeHtml(validatedData.name);
     const safeEmail = escapeHtml(validatedData.email);
     const safeProjectType = escapeHtml(validatedData.projectType);
     const safeMessage = escapeHtml(validatedData.message).replace(/\n/g, '<br>');
 
     const { data, error } = await resend.emails.send({
-      from: contactEmailFrom,
-      to: contactEmailTo,
+      from: 'FORME Contact <onboarding@resend.dev>',
+      to: contactEnvironment.data.CONTACT_TO_EMAIL,
       replyTo: validatedData.email,
       subject: `New Contact Form Submission - ${validatedData.projectType}`,
       html: `
@@ -103,8 +109,8 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Contact form delivery failed.');
       return NextResponse.json(
-        { message: 'Failed to send email' },
-        { status: 500 }
+        { message: 'Unable to send your message. Please try again later.' },
+        { status: 502 }
       );
     }
 
