@@ -2,37 +2,62 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-// Only initialize Resend if API key is available
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-
 const contactSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-  projectType: z.string().min(1, 'Project type is required'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string().trim().min(1, 'Name is required'),
+  email: z.string().trim().email('Invalid email address'),
+  projectType: z.enum([
+    'Brand Identity',
+    'Digital Experience',
+    'Creative Development',
+    'Other',
+  ]),
+  message: z.string().trim().min(10, 'Message must be at least 10 characters'),
 });
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => {
+    switch (character) {
+      case '&':
+        return '&amp;';
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '"':
+        return '&quot;';
+      case "'":
+        return '&#039;';
+      default:
+        return character;
+    }
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Validate request body
     const validatedData = contactSchema.parse(body);
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const contactEmailFrom = process.env.CONTACT_EMAIL_FROM;
+    const contactEmailTo = process.env.CONTACT_EMAIL_TO;
 
-    // If RESEND_API_KEY is not configured, return success without sending
-    // This allows the form to work in development without setting up Resend
-    if (!process.env.RESEND_API_KEY || !resend) {
-      console.log('Contact form submission (Resend not configured):', validatedData);
+    if (!resendApiKey || !contactEmailFrom || !contactEmailTo) {
       return NextResponse.json(
-        { message: 'Message received (email not configured)' },
-        { status: 200 }
+        { message: 'Contact form delivery is not configured.' },
+        { status: 503 }
       );
     }
 
-    // Send email via Resend
+    const resend = new Resend(resendApiKey);
+    const safeName = escapeHtml(validatedData.name);
+    const safeEmail = escapeHtml(validatedData.email);
+    const safeProjectType = escapeHtml(validatedData.projectType);
+    const safeMessage = escapeHtml(validatedData.message).replace(/\n/g, '<br>');
+
     const { data, error } = await resend.emails.send({
-      from: 'FORME Contact <onboarding@resend.dev>', // Change this to your verified domain
-      to: 'hello@forme.studio', // Change this to your email
+      from: contactEmailFrom,
+      to: contactEmailTo,
       replyTo: validatedData.email,
       subject: `New Contact Form Submission - ${validatedData.projectType}`,
       html: `
@@ -55,16 +80,16 @@ export async function POST(request: NextRequest) {
               </div>
               
               <div class="label">Name</div>
-              <div class="value">${validatedData.name}</div>
+              <div class="value">${safeName}</div>
               
               <div class="label">Email</div>
-              <div class="value"><a href="mailto:${validatedData.email}">${validatedData.email}</a></div>
+              <div class="value"><a href="mailto:${safeEmail}">${safeEmail}</a></div>
               
               <div class="label">Project Type</div>
-              <div class="value">${validatedData.projectType}</div>
+              <div class="value">${safeProjectType}</div>
               
               <div class="label">Message</div>
-              <div class="value">${validatedData.message.replace(/\n/g, '<br>')}</div>
+              <div class="value">${safeMessage}</div>
               
               <div class="footer">
                 Sent from FORME contact form
@@ -76,7 +101,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('Contact form delivery failed.');
       return NextResponse.json(
         { message: 'Failed to send email' },
         { status: 500 }
@@ -95,7 +120,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error('Contact form error:', error);
+    console.error('Contact form request failed.');
     return NextResponse.json(
       { message: 'Internal server error' },
       { status: 500 }

@@ -176,7 +176,7 @@ export default function StudioPage() {
             Have something in mind?
           </h2>
           <p className="text-body text-muted mb-12 max-w-2xl mx-auto">
-            We&apos;re currently accepting select projects for 2025.
+            We&apos;re currently accepting select projects.
           </p>
           <Link 
             href="/contact"

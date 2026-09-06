@@ -1,11 +1,7 @@
 import Link from 'next/link';
 
 const footerLinks = {
-  connect: [
-    { name: 'Instagram', href: '#' },
-    { name: 'LinkedIn', href: '#' },
-    { name: 'Email', href: '/contact' },
-  ],
+  connect: [{ name: 'Email', href: '/contact' }],
   explore: [
     { name: 'Work', href: '/work' },
     { name: 'Studio', href: '/studio' },

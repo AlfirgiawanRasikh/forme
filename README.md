@@ -103,9 +103,10 @@ Create a `.env.local` file:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
-# Resend (for contact form)
+# Resend (required for contact form delivery)
 RESEND_API_KEY=your_api_key_here
-CONTACT_EMAIL=your_email@example.com
+CONTACT_EMAIL_FROM="FORME Contact <contact@your-verified-domain.example>"
+CONTACT_EMAIL_TO=your_destination@example.com
 ```
 
 ## Features
